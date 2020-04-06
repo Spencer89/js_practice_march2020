@@ -1,13 +1,14 @@
 //Q1
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
-  return word.charAt(0).toUpperCase() + word.slice(1);
+  return word.charAt(0).toUpperCase() + word.slice(1);}
  /*return the string with character at index zero as a capital 
 plus the string from index 1
 Stack overflow: https://stackoverflow.com/questions/1026069/
 how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
 
-POSSIBLE EDGE CASE: word = phrase starts with a symbol such as @  */}
+POSSIBLE EDGE CASE: word = phrase starts with a symbol such as @  */
+
 
 //Q2
 function generateInitials(firstName, lastName) {
@@ -107,10 +108,14 @@ through because forEach() is declarative, rather than imperitive. For each item,
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   let count = 0
-  {for(let i = 0; i< countLinuxUsers.length; i++)
-  if(users[i].type === "Linux")
-  count++}
-  {return count}}
+  for (let i = 0; i < countLinuxUsers.length; i++) {
+  if (users[i].type === "Linux") {
+  count++
+  }
+  }
+  return count
+  }
+
   /* We want to loop through an array full of objects.
    If users.type === "Linux" we want count ++
   return the count.
@@ -119,9 +124,10 @@ function countLinuxUsers(users) {
    I have moved return count into {} to separate it.
    Q-how do i continue the loop once the condition has been met,
     to search for other instances of the condition being met?
-  
+  ***Had both extra and missingbrackets - see James' Feedback***
      POSSIBLE EDGE CASE:linux with a small "l"
   */
+ 
 
 
 //Q9
