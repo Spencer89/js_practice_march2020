@@ -35,9 +35,24 @@ function hasMPostCode(person) {
   let firstLetter = person.postCode;
   let correctCity = person.city;
   if((firstLetter.charAt(0) === "M") && (correctCity === "Manchester" ))
-  {return true;} else 
-  {return false;}
+  {console.log(firstLetter,correctCity)
 }
+}
+
+/*Try console logging out firstLetter and correctCity - is your code finding the parts of the object that you are expecting?
+
+Here's an example object from one of your tests -
+const person = {
+name: "Jahin",
+age: 55,
+address: {
+line1: "11 Stone Street",
+city: "Maidstone",
+postCode: "ME20 5BR"
+}
+};
+
+How would you read the city property?*/
 
 module.exports = {
   getFillings,

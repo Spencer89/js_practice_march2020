@@ -8,6 +8,7 @@ const {
   getWordFrequencies
 } = require("../challenges/week8");
 
+//Q1 test
 describe("findNextNumber", () => {
   test("returns the next number after the given number in the array", () => {
     expect(findNextNumber([5, 3, 7, 8, 1, 10], 7)).toBe(8);
@@ -28,6 +29,7 @@ describe("findNextNumber", () => {
   });
 });
 
+//Q2 test
 describe("count1sand0s", () => {
   test("returns an object with the count of 1s and 0s in a string", () => {
     expect(count1sand0s("11000")).toEqual({
@@ -52,6 +54,7 @@ describe("count1sand0s", () => {
   });
 });
 
+//Q3 test
 describe("reverseNumber", () => {
   test("reverses the digits of a number", () => {
     expect(reverseNumber(5)).toBe(5);
@@ -61,6 +64,7 @@ describe("reverseNumber", () => {
   });
 });
 
+//Q4 test
 describe("sumArrays", () => {
   test("returns the total of the numbers in all sub arrays", () => {
     const arrs = [[1, 2, 3], [6, 3, 1], [1], [9, 10], [3, 5]];
@@ -68,6 +72,7 @@ describe("sumArrays", () => {
   });
 });
 
+//Q5 test
 describe("arrShift", () => {
   test("returns an array with the first and last items swapped", () => {
     expect(arrShift([1, 2])).toEqual([2, 1]);
@@ -81,7 +86,8 @@ describe("arrShift", () => {
   });
 });
 
-describe("findNeedle", () => {
+//Q6 test
+describe.only("findNeedle", () => {
   test("returns true if any of the properties of an object contain the specified string", () => {
     const obj1 = {
       name: "LINNMON",
@@ -113,7 +119,7 @@ describe("findNeedle", () => {
     };
     expect(findNeedle(obj1, "chair")).toBe(false);
 
-    // Note that the objects provided to the function could have any keys/values
+    // Note that the objects provided to the function could have any keys/values - use bracket notation
     const obj2 = {
       product_name: "Sparkle n Shine Dishwasher Tablets",
       price: 1.99,
@@ -139,6 +145,7 @@ describe("findNeedle", () => {
   });
 });
 
+//Q7 test
 describe("getWordFrequencies", () => {
   test("returns the frequencies of each word in a string", () => {
     expect(getWordFrequencies("hello world")).toEqual({
