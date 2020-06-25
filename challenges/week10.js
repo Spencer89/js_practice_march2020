@@ -1,10 +1,24 @@
+
+//Q1 - COMPLETE
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 /**
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
  * @param {Number} n
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  //split number into an array of separate digits
+  const singleDigits = n.toString().split('').map(Number);
+  //make a new variable called 'results' and set it to the array of digits with reduce
+  let results = singleDigits.reduce(
+    (accumulator, currentValue) => accumulator + currentValue)
+  //return results
+  return results;
 };
+
+
+
+//Q2
 
 /**
  * This function creates a range of numbers as an array. It received a start, an end and a step. Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 the resulting range would be: [3, 5, 7, 9, 11]
@@ -17,7 +31,16 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  //create a new array for any results to be pushed into
+
+  //make a loop that begins at start, continues till end, and increments by step
+  for (let i = start; i < end; i = step) { return i; }
+
 };
+
+
+
+//Q3
 
 /**
  * This function takes an array of user objects and their usage in minutes of various applications. The format of the data should be as follows:
@@ -42,7 +65,7 @@ const createRange = (start, end, step) => {
  *                ]
  *   },
  * ]
- *
+ * 
  * The function should return an array of usernames of users who have used more than 100 minutes of screentime for a given date.
  * The date will be provided in the format "2019-05-04" (YYYY-MM-DD)
  * For example, if passed the above users and the date "2019-05-04" the function should return ["beth_1234"] as she used over 100 minutes of screentime on that date.
@@ -51,7 +74,11 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  //consider using filter??
 };
+
+
+//Q4
 
 /**
  * This function will receive a hexadecimal color code in the format #FF1133. A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. If you want to know more about hexadecimal notation:
@@ -65,8 +92,11 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+
+
 };
 
+//Q5
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
  * [
