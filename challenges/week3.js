@@ -2,7 +2,6 @@
 
 //Create a function called getSquares that takes in an array called numbers
 function getSquares(nums) {
-  //Not sure I understand this part?? 
   nums.forEach(function (element, index, array) {
     array[index] = element * element;
   });
@@ -26,24 +25,39 @@ function camelCaseWords(words) {
 //Also used https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
 
 
-//Q3.***INCOMPLETE*** receiving undefined
+//Q3.
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  const allSubjects =
-return allSubjects.length;}
+  let count = 0
+  //create a count that starts at 0
+  for (let i = 0; i < people.length; i++) {
+  //loop through people
+    count += people[i]["subjects"].length;
+  //the count will be equal to the length of the iterations of subjects
+  } return count;
+  //return the count
+}
 
-    
 
 
-/*
-//Q4. ***INCOMPLETE*** receiving undefined error
+
+
+//Q4. 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  menu.some(obj => {
-    if (obj.ingredient === ingredient)
-    {return true}
-})};  
+//create a variable 'isIngredient' and set to false as a default
+  let isIngredient = false;
+  //loop through the items in the menu
+  for(let item of menu) {
+    //if the item includes the ingredient
+    if (item.ingredients.includes(ingredient)) {
+      //change isIngredient to true
+    isIngredient = true;
+    }
+    //return isIngredient 
+}
+return isIngredient }
 
 
 //Q5.COMPLETE
@@ -62,12 +76,12 @@ function duplicateNumbers(arr1, arr2) {
   return sortedDuplicates.filter((a, b) => sortedDuplicates.indexOf(a) === b);
 }
 
-*/
+
 
 module.exports = {
-getSquares,
-camelCaseWords,
-getTotalSubjects,
-//checkIngredients,
-//duplicateNumbers
+  getSquares,
+  camelCaseWords,
+  getTotalSubjects,
+  checkIngredients,
+  duplicateNumbers
 };

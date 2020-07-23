@@ -37,23 +37,28 @@ function getIntegers(nums) {
   return result;
 }
 
-//Q5-***INCOMPLETE*** - Returns undefined
+//Q5
 function getCities(users){ 
-  let results= users.map(person =>
-    (person.displayName)
-    )
-   return results;
+  if (!users) throw new Error ("users is required");
+  let results = users.map(users => (users.data.city.displayName));
+  return results
 }
   
  
     
     
 
-//Q6 ***NEARLY COMPLETE - slight rounding error***
+//Q6 
 function getSquareRoots(nums) {
 if (!nums) throw new Error ("nums is required");
-let result = nums.map(x =>  Math.sqrt(x).toFixed(2));
-return result
+//create a variable called results and set it equal to a map through the numbers
+let results = nums.map(num => {
+//create a variable called squareRoot which is equal to the number with sqrt applied
+  let squareRoot = Math.sqrt(num);
+//return a number which is the squareRoot number to 2 decimal places
+  return Number(squareRoot.toFixed(2));
+});
+return results
 }
 
 

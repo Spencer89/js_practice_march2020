@@ -29,30 +29,19 @@ function countSheep(arr) {
   { return count; }
 }
 
-//Q5. ***INCOMPLETE***
+//Q5. 
 function hasMPostCode(person) {
   if (person === undefined) throw new Error("person is required");
-  let firstLetter = person.postCode;
-  let correctCity = person.city;
-  if((firstLetter.charAt(0) === "M") && (correctCity === "Manchester" ))
-  {console.log(firstLetter,correctCity)
-}
+
+  if (person.address.city === "Manchester" && person.address.postCode[0] === "M")
+    return true;
+  else {
+    return false;
+  }
+
 }
 
-/*Try console logging out firstLetter and correctCity - is your code finding the parts of the object that you are expecting?
 
-Here's an example object from one of your tests -
-const person = {
-name: "Jahin",
-age: 55,
-address: {
-line1: "11 Stone Street",
-city: "Maidstone",
-postCode: "ME20 5BR"
-}
-};
-
-How would you read the city property?*/
 
 module.exports = {
   getFillings,

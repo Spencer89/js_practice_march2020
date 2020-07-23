@@ -2,16 +2,18 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  // Loop through the array
-  //if n === index
-  //return index +1
-  //else return null***issue here***
-  for (let i = 0; i < nums.length; i++)
-    if (nums[i] === n) {
-      return nums[i + 1];
-    }else{null}
-
-  
+  //create a variable called index, which is equal to the index of nums
+  let index = nums.indexOf(n);
+  //if the index is greater than or equal to zero AND less than the length of numbers minus 1
+  if (index >= 0 && index < nums.length - 1) {
+    //create a variable called next which will be equal to nums, 
+    //but with index increased by 1
+    let next = nums[index + 1];
+    //return next
+    return next
+  }
+  //otherwise return null
+  else return null
 };
 
 
@@ -19,38 +21,23 @@ const findNextNumber = (nums, n) => {
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
 
-
-//loop through the array
-for(let i=0; i<str.length; i++){
-
-//create your variables to store your counts for ones and zeros
-let countZeros= 0;
-let countOnes= 0;
-
-//if the thing we loop through is a zer0, increase countZeros by 1
-  if(str[i] === 0){
-    countZeros = countZeros +1;
+  let arr = str.split('');
+  //declare a new variable which is str split into single numbers
+  let ones = 0;
+  //create a counter for 1s
+  let zeros = 0;
+  //create a counter for zeros
+  let obj = {
+    1: ones,
+    0:zeros
   }
-
-//if the thing we loop through is not a zero, increase countOnes by one
-  else{ (str[i] !== 0)
-
-    countOnes = countOnes +1
-  }
-
-//create an object to store your answers and insert the counts  
-  const frequencies ={0:`${countZeros}` , 1:`${countOnes}`};
-    return frequencies;
-}
-}
-
-
-//Q2 attempt 2 using technique for tallying from Harriettes video - works, but doesn't return any values that aren't within the string.
-
-
-
-
-
+  //create an object which contains the variable ones and zeros against a tally
+  arr.forEach(num => num === "1" ? ones++ : zeros++)  
+  //loop over the split array and for each time it iterates, if the element is equal to
+  //1 then one increases by 1, and if false, then zero increases by 1. 
+  return obj; 
+  // return the object
+};
 
 
 //Q3 - COMPLETE
@@ -66,7 +53,7 @@ const sumArrays = arrs => {
   //first, flatten the array
   let flatArrs = [].concat.apply([], arrs);
   //then return this array using .reduce
-    return flatArrs.reduce((a, b) => a + b)
+  return flatArrs.reduce((a, b) => a + b)
 
 };
 
@@ -83,14 +70,22 @@ const arrShift = arr => {
 
 };
 
-//Q6 - watch video first!
+//Q6 - COMPLETE
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
- for(let key in haystack)
- 
- return haystack[key]
-  
+
+  let count = 0;
+  //create count
+  for(let key in haystack) {
+  //loop through each key in the haystack object
+    if(haystack[key].toString().toLowerCase().search(searchTerm.toLowerCase()) !== -1)
+    count++
+  //if the key of that haystack in a lower case strong does not equal -1 then count
+  // will increase by one. Note:.search() will return -1 if search term not found
+  }
+  return count > 0;
+  //return the count which is greater than zero
 };
 
 //Q7 - COMPLETE
