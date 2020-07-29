@@ -31,12 +31,24 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-  //create a new array for any results to be pushed into
+  if (step === undefined) throw new Error("end is required");
+  if (typeof start !== "number" || typeof start !== "number" || typeof step !== "number") {
+    throw new Error("start, end and step must be numbers");
+  }
+  if (step < 1 || step > end) throw new Error("step must be greater than 1 and less than end");
 
-  //make a loop that begins at start, continues till end, and increments by step
-  for (let i = start; i < end; i = step) { return i; }
+  let arr = [];
+  //create a new array
+  for (let i = start; i <= end; i += step) {
+    //create a loop that goes all the way to the end
 
+    arr.push(i);
+    //push i to the array
+  }
+  return arr;
+  //return the array
 };
+
 
 
 
@@ -74,7 +86,31 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
-  //consider using filter??
+
+  let usageForDay = [];
+  //create a new array 
+  let topUser = [];
+  //create another new array
+  users.forEach(user => user.screenTime.forEach(d => {
+    //loop through each users screen time for each day
+    if (d.date === date) {
+      //if the date given is the same as the date
+      for (let key in d.usage) {
+        //loop through the usage
+        if (d.usage.hasOwnProperty(key)) {
+          //if it exists
+          usageForDay.push(d.usage[key]);
+          //push it to the usage for day variable
+        }
+      }
+      topUser.push(user.username)
+      //push the username to top user
+    }
+  }));
+  if (usageForDay.reduce((a, b) => a + b) >= 100) return topUser;
+  //return the top usr using reduce
+  else return []
+  //otherwise return empty array
 };
 
 
@@ -92,9 +128,15 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-
-
+  if (hexStr.charAt(0) !== "#") throw new Error("# Hash needed at start of hexStr");
+  const red = parseInt(hexStr.slice(1, 3), 16);
+  const green = parseInt(hexStr.slice(3, 5), 16);
+  const blue = parseInt(hexStr.slice(5, 7), 16);
+  return `rgb(${red},${green},${blue})`
+  // in hexadecimal system, F means 16
+  //https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hexadecimal-in-javascript
 };
+
 
 //Q5
 /**
@@ -109,6 +151,22 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  if (!Array.isArray(board)) throw new Error("board must be an array");
+  let myWinner = null; board[0][0] === board[0][1] && board[0][1] === board[0][2] ? myWinner = board[0][0] : 0;
+  board[1][0] === board[1][1] && board[1][1] === board[1][2] ? myWinner = board[1][0] : 0;
+
+  board[2][0] === board[2][1] && board[2][1] === board[2][2] ? myWinner = board[2][0] : 0;
+
+  board[0][0] === board[1][0] && board[1][0] === board[2][0] ? myWinner = board[0][0] : 0;
+
+  board[0][1] === board[1][1] && board[1][1] === board[2][1] ? myWinner = board[0][1] : 0;
+
+  board[0][2] === board[1][2] && board[1][2] === board[2][2] ? myWinner = board[0][2] : 0;
+
+  board[0][0] === board[1][1] && board[1][1] === board[2][2] ? myWinner = board[0][0] : 0;
+
+  board[2][0] === board[1][1] && board[1][1] === board[2][0] ? myWinner = board[2][0] : 0;
+  return myWinner;
 };
 
 module.exports = {

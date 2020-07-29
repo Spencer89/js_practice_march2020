@@ -15,32 +15,62 @@ const sumMultiples = arr => {
   return total;
 };
 
-/**Q2 - INCOMPLETE
+/**Q2 - COMPLETE
  * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
  * @param {String}
  * @returns {Boolean}
  */
-const isValidDNA = str => {
-  if (str === undefined) throw new Error("str is required");
-  let letters = str.split('');
-  const answer = letters.every(letter => letter === "A" || letter === "G" || letter === "T" || letter ==="C")
-    
-  return answer;
-  
 
+const isValidDNA = str => {
+  if (str === undefined) throw new Error("string is required");
+  if (str === undefined) throw new Error("string is required");
+  if (typeof str !== "string") throw new Error("string is required");
+
+  let dna = 0;
+  //create a counter for dna
+  let notDNA = 0;
+  //create a counter for NOT dna
+  for (let i = 0; i < str.length; i++) {
+  //loop through the string
+    if (str[i] === "A" || str[i] === "T" || str[i] === "C" || str[i] === "G") dna++;
+    else notDNA ++;
+  }
+  //if the string iteration is A OR T OR C OR G, dna should increase count by one
+  //otherwise, notdna should increase by one
+  return dna === 4 && notDNA === 0;
+  //return dna in fours and not dna
 };
 
 
 
 
-/**Q3 - INCOMPLETE
+
+/**Q3 - COMPLETE
  * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
 const getComplementaryDNA = str => {
-  if (str === undefined) throw new Error("str is required");
+  if (str === undefined) throw new Error("string is required");
+  if (typeof str !== "string") throw new Error("string is required");
+  if (isValidDNA(str) === false) throw new Error("valid DNA string is required");
+
+  let complementaryDNA = "";
+  // create a new variable with a blank string
+  for(let i = 0; i < str.length; i++) {
+    //loop through the string
+    if (str[i] === "T") complementaryDNA += "A";
+    //if the iteration that we are looping through is T, the complementary DNA becomes A 
+    else if (str[i] === "A") complementaryDNA += "T";
+    //if the iteration that we are looping through is A, the complementary DNA becomes T 
+    else if (str[i] === "C") complementaryDNA += "G";
+    //if the iteration that we are looping through is c, the complementary DNA becomes G 
+    else if (str[i] === "G") complementaryDNA += "C";
+    //if the iteration that we are looping through is G, the complementary DNA becomes C 
+  }
+  return complementaryDNA;
 };
+
 
 /**Q4 - COMPLETE
  * https://www.w3resource.com/javascript-exercises/javascript-function-exercise-8.php
@@ -85,11 +115,20 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-  let repeatedArr = [];
-  let newArray = [];
-  repeatedArr.length = n;
-  repeatedArr.forEach(gap => gap === n).push(newArray)
-  return repeatedArr;
+  if (typeof n !== "number") throw new Error("first argument must be a number");
+
+  let contArr = [];
+  //create an array called continuous array
+  let newArr = [];
+  //create an array called new array
+  for(let i = 0; i < n; i++) {
+    //loop through n number of time
+    newArr.push(fill);
+    //push the fill to the new array
+    contArr.push(newArr);
+    //push the new array to contArr
+  }
+  return contArr;
 };
 
 /**Q6
@@ -107,6 +146,13 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+
+  let tally = 0;
+  //create a count called tally
+  staff.forEach(person => person.rota.forEach(d => d === day ? tally++ : ''));
+  //for each person, loop through the rota of that person and if they have at least 
+  //one day, increate the tally
+  return tally >= 3;
 };
 
 module.exports = {
